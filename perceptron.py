@@ -12,6 +12,22 @@ class Perceptron:
     
     def sigmoid(self, z):
         return 1 / (1 + np.exp(-z))
+    
+    def predict_probability(self, X):
+        z = np.dot(self.weights, X) + self.bias
+        probabilities = self.sigmoid(z)
+        return probabilities
+    
+    def predict(self, X):
+        probabilites = self.predict_probability(X)
+        if probabilites >= 0.5:
+            return 1
+        else:
+            return 0
+        
+
+    
+
 
 
 
