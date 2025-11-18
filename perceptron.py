@@ -21,9 +21,9 @@ class Perceptron:
     def predict(self, X):
         probabilites = self.predict_probability(X)
         if probabilites >= 0.5:
-            return 1
+            return [1]
         else:
-            return 0
+            return [0]
         
 
     
