@@ -24,6 +24,15 @@ class Perceptron:
             return [1]
         else:
             return [0]
+    
+    def train(self, X, y, epochs):
+        for i in range(epochs):
+            predictions = self.predict_probability(X)
+            error = predictions - y
+            loss = np.mean(error**2)
+            grad = error * predictions * (1 - predictions)
+            self.weights -= self.learning_rate * np.dot(X.T, grad)
+            bias -= self.learning_rate * np.sum(grad)
         
 
     
