@@ -9,6 +9,9 @@ class Perceptron:
     
     def create_weights(self):
         return np.zeros(self.input_size)
+    
+    def sigmoid(self, z):
+        return 1 / (1 + np.exp(-z))
 
 
 
