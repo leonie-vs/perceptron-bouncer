@@ -42,14 +42,14 @@ def test_predict_returns_1_when_output_high():
 	p = Perceptron(input_size=2)
 	p.weights = np.array([10,10])
 	p.bias = 5.0 
-	result = p.predict([1,0])
+	result = p.predict([[1,0]])
 	assert result == [1]
 
 def test_predict_returns_0_when_output_low():
 	p = Perceptron(input_size=2)
 	p.weights = np.array([10,10])
 	p.bias = -15.0 
-	result = p.predict([1,0])
+	result = p.predict([[1,0]])
 	assert result == [0]
 
 def test_train_changes_weights_and_bias():

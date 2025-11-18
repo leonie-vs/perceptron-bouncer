@@ -29,4 +29,4 @@ def get_training_data():
     }
     return training_data
 
-print(get_training_data())
+#print(get_training_data())

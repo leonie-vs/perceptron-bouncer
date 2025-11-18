@@ -14,16 +14,19 @@ class Perceptron:
         return 1 / (1 + np.exp(-z))
     
     def predict_probability(self, X):
-        z = np.dot(self.weights, X) + self.bias
+        z = np.dot(X, self.weights) + self.bias
         probabilities = self.sigmoid(z)
         return probabilities
     
     def predict(self, X):
         probabilites = self.predict_probability(X)
-        if probabilites >= 0.5:
-            return [1]
-        else:
-            return [0]
+        result = []
+        for i in probabilites:
+            if i >= 0.5:
+                result.append(1)
+            else:
+                result.append(0)
+        return result
     
     def train(self, X, y, epochs):
         for i in range(epochs):
@@ -32,7 +35,7 @@ class Perceptron:
             loss = np.mean(error**2)
             grad = error * predictions * (1 - predictions)
             self.weights -= self.learning_rate * np.dot(X.T, grad)
-            bias -= self.learning_rate * np.sum(grad)
+            self.bias -= self.learning_rate * np.sum(grad)
         
 
     
